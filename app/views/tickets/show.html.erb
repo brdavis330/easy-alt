@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Ticket #<%= @the_ticket.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/tickets">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_ticket/<%= @the_ticket.id %>">
+          Delete ticket
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Customer
+      </dt>
+      <dd>
+        <%= @the_ticket.customer_id %>
+      </dd>
+
+      <dt>
+        Vendor
+      </dt>
+      <dd>
+        <%= @the_ticket.vendor_id %>
+      </dd>
+
+      <dt>
+        Details
+      </dt>
+      <dd>
+        <%= @the_ticket.details %>
+      </dd>
+
+      <dt>
+        Photo
+      </dt>
+      <dd>
+        <%= @the_ticket.photo %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_ticket.status %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_ticket.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_ticket.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit ticket
+    </h2>
+
+    <form action="/modify_ticket/<%= @the_ticket.id %>"  method="post" >
+      <div>
+        <label for="customer_id_box">
+          Customer
+        </label>
+
+        <input type="text" id="customer_id_box" name="query_customer_id" value="<%= @the_ticket.customer_id %>">
+      </div>
+
+      <div>
+        <label for="vendor_id_box">
+          Vendor
+        </label>
+
+        <input type="text" id="vendor_id_box" name="query_vendor_id" value="<%= @the_ticket.vendor_id %>">
+      </div>
+
+      <div>
+        <label for="details_box">
+          Details
+        </label>
+
+        <textarea id="details_box" name="query_details"><%= @the_ticket.details %></textarea>
+      </div>
+
+      <div>
+        <label for="photo_box">
+          Photo
+        </label>
+
+        <input type="text" id="photo_box" name="query_photo" value="<%= @the_ticket.photo %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_ticket.status %>">
+      </div>
+
+      <button>
+        Update ticket
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

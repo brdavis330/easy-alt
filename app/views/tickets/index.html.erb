@@ -1,0 +1,150 @@
+<div>
+  <div>
+    <h1>
+      List of all tickets
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new ticket
+    </h2>
+
+    <form action="/insert_ticket" method="post">
+      <div>
+        <label for="customer_id_box">
+          Customer
+        </label>
+
+        <input type="text" id="customer_id_box" name="query_customer_id">
+      </div>
+
+      <div>
+        <label for="vendor_id_box">
+          Vendor
+        </label>
+
+        <input type="text" id="vendor_id_box" name="query_vendor_id">
+      </div>
+
+      <div>
+        <label for="details_box">
+          Details
+        </label>
+
+        <textarea id="details_box" name="query_details" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="photo_box">
+          Photo
+        </label>
+
+        <input type="text" id="photo_box" name="query_photo">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status">
+      </div>
+
+      <button>
+        Create ticket
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Customer
+        </th>
+
+        <th>
+          Vendor
+        </th>
+
+        <th>
+          Details
+        </th>
+
+        <th>
+          Photo
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_tickets.each do |a_ticket| %>
+      <tr>
+        <td>
+          <%= a_ticket.id %>
+        </td>
+
+        <td>
+          <%= a_ticket.customer_id %>
+        </td>
+
+        <td>
+          <%= a_ticket.vendor_id %>
+        </td>
+
+        <td>
+          <%= a_ticket.details %>
+        </td>
+
+        <td>
+          <%= a_ticket.photo %>
+        </td>
+
+        <td>
+          <%= a_ticket.status %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_ticket.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_ticket.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/tickets/<%= a_ticket.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

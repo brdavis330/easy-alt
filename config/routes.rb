@@ -2,6 +2,25 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Ticket resource:
+
+  # CREATE
+  post("/insert_ticket", { :controller => "tickets", :action => "create" })
+          
+  # READ
+  get("/tickets", { :controller => "tickets", :action => "index" })
+  
+  get("/tickets/:path_id", { :controller => "tickets", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_ticket/:path_id", { :controller => "tickets", :action => "update" })
+  
+  # DELETE
+  get("/delete_ticket/:path_id", { :controller => "tickets", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the User account:
 
   # SIGN UP FORM
