@@ -54,3 +54,8 @@ end
 group :production do
   gem 'pg'
 end
+
+group :image do 
+  gem 'carrierwave'
+  gem 'cloudinary'
+end
