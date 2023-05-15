@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: "application#root"
-
+  #root to: "appplication#about"
   # Routes for the Message resource:
 
   # CREATE
@@ -65,5 +65,6 @@ Rails.application.routes.draw do
   get("/user_sign_out", { :controller => "user_authentication", :action => "destroy_cookies" })
 
   #------------------------------
-
+  #ABOUT 
+  get("/about", { :controller => "user_authentication", :action => "show" })
 end
