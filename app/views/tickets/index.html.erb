@@ -1,4 +1,5 @@
 <div>
+<div class="px-4 text-center">
   <div>
     <h1>
       List of all tickets
@@ -40,11 +41,11 @@
       </div>
 
       <div>
-        <label for="photo_box">
-          Photo
-        </label>
-
-        <input type="text" id="photo_box" name="query_photo">
+      <label for="photo_box">
+        Photo
+      </label>
+      <form action="/create_user" method="post" class="form-horizontal" enctype="multipart/form-data">
+       <input type="file" id="photo" name="photo" class="form-control">
       </div>
 
       <div>
@@ -62,46 +63,6 @@
   </div>
 </div>
 
-<hr>
-<div>
-  <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Customer
-        </th>
-
-        <th>
-          Vendor
-        </th>
-
-        <th>
-          Details
-        </th>
-
-        <th>
-          Photo
-        </th>
-
-        <th>
-          Status
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
 
       <% @list_of_tickets.each do |a_ticket| %>
       <tr>
@@ -145,6 +106,5 @@
       <% end %>
     </table>
   </div>
+  </div>
 </div>
-
-<hr>

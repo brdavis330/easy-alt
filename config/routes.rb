@@ -67,4 +67,10 @@ Rails.application.routes.draw do
   #------------------------------
   #ABOUT 
   get("/about", { :controller => "user_authentication", :action => "show" })
+
+  #REDIRECTIONS
+
+  #get("/user_sign_in"), redirect_to: ("/messages")
+
+  #get("/user_sign_up"), redirect_to: ("/insert_ticket")
 end
