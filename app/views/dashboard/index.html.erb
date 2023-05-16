@@ -1,0 +1,22 @@
+<div class="container">
+  <h1> Tickets</h1>
+
+  <!-- Display the list of tickets -->
+  <% @list_of_tickets.each do |ticket| %>
+    <div class="card mb-3">
+      <div class="card-header">
+        <h5>Ticket ID: <%= ticket.id %></h5>
+      </div>
+      <div class="card-body">
+        <h6 class="card-title">Customer ID: <%= ticket.customer_id %></h6>
+        <h6 class="card-title">Vendor ID: <%= ticket.vendor_id %></h6>
+        <p class="card-text">Details: <%= ticket.details %></p>
+        <p class="card-text">Status: <%= ticket.status %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Add a link to create a new ticket -->
+  <a href="/tickets/new" class="btn btn-primary">Create New Ticket</a>
+
+</div>

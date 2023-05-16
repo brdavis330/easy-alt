@@ -3,7 +3,9 @@
     <a class="navbar-brand" href="/">
       Easy Alt
     </a>
-  
+  <nav class="navbar navbar-dark bg-dark">
+  <form class="form-outline">
+   
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,9 +23,14 @@
             <a href="/tickets" class="dropdown-item">
               Tickets
             </a>
-            <a href="/user_sign_out" class="dropdown-item">
-              Log Out
-            </a>
+
+            <% if @current_user.present? %>
+              <a href="/user_sign_out" class="dropdown-item">
+                Log Out
+              </a>
+            <% else %>
+              <%# TODO: login / sign up %>
+            <% end %>
           </div>
 
         </li>

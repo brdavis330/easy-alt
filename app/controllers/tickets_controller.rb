@@ -51,6 +51,12 @@ class TicketsController < ApplicationController
     end
   end
 
+  def application
+    @list_of_tickets = Ticket.order(created_at: :desc)
+  
+    redirect_to("/user_profile.html.erb", { :notice => "Ticket deleted successfully."} 
+  end
+
   def destroy
     the_id = params.fetch("path_id")
     the_ticket = Ticket.where({ :id => the_id }).at(0)

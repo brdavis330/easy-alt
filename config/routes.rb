@@ -65,10 +65,12 @@ Rails.application.routes.draw do
   get("/user_sign_out", { :controller => "user_authentication", :action => "destroy_cookies" })
 
   #------------------------------
-  #ABOUT 
+  #ABOUT
   get("/about", { :controller => "user_authentication", :action => "show" })
 
-  #REDIRECTIONS
+  #PROFILE
+
+  get("/dashboard", { :controller => "dashboard", :action => "index" })
 
   #get("/user_sign_in"), redirect_to: ("/messages")
 
