@@ -71,7 +71,7 @@ Rails.application.routes.draw do
   #PROFILE
 
   get("/dashboard", { :controller => "dashboard", :action => "index" })
-
+  #:controller => "dashboard",:action => "index"})
   #get("/user_sign_in"), redirect_to: ("/messages")
 
   #get("/user_sign_up"), redirect_to: ("/insert_ticket")
