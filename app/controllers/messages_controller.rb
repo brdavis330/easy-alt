@@ -48,6 +48,11 @@ class MessagesController < ApplicationController
       redirect_to("/messages/#{the_message.id}", { :alert => the_message.errors.full_messages.to_sentence })
     end
   end
+  def dashboard
+    @list_of_messages = Message.order(created_at: :desc)
+  
+    redirect_to("/dashboard.html.erb", { :notice => "Message deleted successfully."})
+  end
 
   def destroy
     the_id = params.fetch("path_id")
@@ -57,4 +62,5 @@ class MessagesController < ApplicationController
 
     redirect_to("/messages", { :notice => "Message deleted successfully."} )
   end
+  
 end

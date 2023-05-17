@@ -1,5 +1,5 @@
 <div class="container">
-  <h1> Tickets</h1>
+  <h1>Tickets</h1>
 
   <!-- Display the list of tickets -->
   <% @list_of_tickets.each do |ticket| %>
@@ -17,6 +17,61 @@
   <% end %>
 
   <!-- Add a link to create a new ticket -->
-  <a href="/tickets/new" class="btn btn-primary">Create New Ticket</a>
-
+  <a href="/tickets" class="btn btn-secondary">Create New Ticket</a>
 </div>
+
+<div class="container">
+  <h1>Messages</h1>
+
+  <% @list_of_messages.each do |message| %>
+    <div class="card mb-3">
+      <div class="card-header">
+        <h5>Message ID: <%= message.id %></h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Content: <%= message.content %></p>
+        <p class="card-text">Sender ID: <%= message.sender_id %></p>
+        <p class="card-text">Ticket ID: <%= message.ticket_id %></p>
+      </div>
+    </div>
+  
+
+  <!-- Add a link to create a new message -->
+ 
+</div>
+
+<div class="container">
+  <h1>Message <%= @the_message.id %> details</h1>
+ 
+  <div>
+    <div>
+      <a href="/messages">Go back</a>
+    </div>
+
+    <div>
+      <a href="/delete_message/<%= @the_message.id %>">Delete message</a>
+    </div>
+  </div>
+
+  <dl>
+    <dt>Content</dt>
+    <dd><%= @the_message.content %></dd>
+
+    <dt>Photo</dt>
+    <dd><%= @the_message.photo %></dd>
+
+    <dt>Sender</dt>
+    <dd><%= @the_message.sender_id %></dd>
+
+    <dt>Ticket</dt>
+    <dd><%= @the_message.ticket_id %></dd>
+
+    <dt>Created at</dt>
+    <dd><%= time_ago_in_words(@the_message.created_at) %> ago</dd>
+
+    <dt>Updated at</dt>
+    <dd><%= time_ago_in_words(@the_message.updated_at) %> ago</dd>
+  </dl>
+</div>
+<% end %>
+<a href="/messages" class="btn btn-secondary">Create New Message</a>
