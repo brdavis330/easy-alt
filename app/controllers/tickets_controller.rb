@@ -19,7 +19,7 @@ class TicketsController < ApplicationController
 
   def create
     the_ticket = Ticket.new
-    the_ticket.customer_id = params.fetch("query_customer_id")
+    the_ticket.customer = @current_user
     the_ticket.vendor_id = params.fetch("query_vendor_id")
     the_ticket.details = params.fetch("query_details")
     the_ticket.photo = params.fetch("query_photo")
@@ -27,7 +27,7 @@ class TicketsController < ApplicationController
 
     if the_ticket.valid?
       the_ticket.save
-      redirect_to("/tickets", { :notice => "Ticket created successfully." })
+      redirect_to("/dashboard", { :notice => "Ticket created successfully." })
     else
       redirect_to("/tickets", { :alert => the_ticket.errors.full_messages.to_sentence })
     end
@@ -45,16 +45,16 @@ class TicketsController < ApplicationController
 
     if the_ticket.valid?
       the_ticket.save
-      redirect_to("/tickets/#{the_ticket.id}", { :notice => "Ticket updated successfully."} )
+      redirect_to("/tickets/#{the_ticket.id}", { :notice => "Ticket updated successfully." })
     else
       redirect_to("/tickets/#{the_ticket.id}", { :alert => the_ticket.errors.full_messages.to_sentence })
     end
   end
 
-  def application
+  def dashboard
     @list_of_tickets = Ticket.order(created_at: :desc)
-  
-    redirect_to("/user_profile.html.erb", { :notice => "Ticket deleted successfully."} 
+
+    redirect_to("/dashboard.html.erb", { :notice => "Ticket deleted successfully." })
   end
 
   def destroy
@@ -63,6 +63,6 @@ class TicketsController < ApplicationController
 
     the_ticket.destroy
 
-    redirect_to("/tickets", { :notice => "Ticket deleted successfully."} )
+    redirect_to("/tickets", { :notice => "Ticket deleted successfully." })
   end
 end
