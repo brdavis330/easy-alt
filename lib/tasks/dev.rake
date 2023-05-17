@@ -1,27 +1,28 @@
 desc "Hydrate the database with some sample data to look at so that developing is easier"
-task({ :sample_data => :environment}) do
-  #  id              :integer          not null, primary key
-  #  address         :string
-  #  email           :string
-  #  name            :string
-  #  password_digest :string
-  #  phone_number    :string
-  #  vendor          :boolean
-  #  created_at      :datetime         not null
-  #  updated_at      :datetime     
-
+task({ :sample_data => :environment }) do
   names = ["Pat", "Raghu", "Jelani"]
   bool = [true, false]
 
-  3 times do |count|
-    user = User.new
-    user.name = names.at(count)
-    user.address = "200 S Wacker"
-    user.email = "#{name.at(count)}@example.com"
-    user.password = "password"
-    user.phone_number = "222-222-2222"
-    user.vendor = bool.sample
-  end
+  5.times do |count|
+    name = Faker::Name.first_name
+    user = User.create(
+      name: name,
+      address: Faker::Address.full_address,
+      email: "#{name.downcase.split(" ").join("-")}@example.com",
+      phone_number: Faker::PhoneNumber.phone_number,
+      vendor: [true, false].sample,
+    ) do |u|
+      u.password = "password"
+    end
 
-  p "Added #{User.count} Users"
+    ticket = Ticket.create(
+      status: "new",
+      details: Faker::Lorem.paragraph,
+      customer: User.where(vendor: false).sample,
+      vendor: User.where(vendor: true).sample,
+    )
+    ticket.remote_photo_url = Faker::LoremFlickr.image(size: "250x250", search_terms: ["fashion"])
+
+    ticket.save
+  end
 end
