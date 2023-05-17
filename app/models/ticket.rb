@@ -17,4 +17,5 @@ class Ticket < ApplicationRecord
   has_many(:messages, { :class_name => "Message", :foreign_key => "ticket_id", :dependent => :destroy })
 
   mount_uploader :photo, PhotoUploader
+  attribute :status, :string, default: "new"
 end

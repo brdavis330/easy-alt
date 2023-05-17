@@ -4,35 +4,6 @@
   </h2>
   <form action="/insert_ticket" method="post">
     <div>
-      <label for="customer_id_box">
-        Customer
-      </label>
-    </div>
-    <div class="row">
-      <div class="col">
-        <input type="text" class="form-control" placeholder="First name">
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Last name">
-      </div>
-    </div>
-  
-    <div>
-      <label for="vendor_id_box">
-        Vendor
-      </label>
-
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-        <label class="form-check-label" for="inlineRadio1">Yes</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-        <label class="form-check-label" for="inlineRadio2">No</label>
-      </div>
-    </div>
-
-    <div>
       <label for="details_box">
         Details
       </label>
@@ -54,19 +25,12 @@
       <input type="file" id="photo" name="photo" class="form-control">
     </div>
 
-    <div>     
-      <div class="form-row align-items-center">
-        <div class="col-auto my-1">
-          <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
-          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-            <option selected>Choose...</option>
-            <option value="1">New</option>
-            <option value="2">In Progress</option>
-            <option value="3">Complete</option>
-          </select>
-        </div>
-      </div>
-    </div>
+    <select name="vendor_id">
+      <option></option>
+      <% User.all.each do |v|%>
+        <option value="<%= v.id %>"><%= v.name %></option>
+      <% end %>
+    </select>
 
     <button>
       Create ticket

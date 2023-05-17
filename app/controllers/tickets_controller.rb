@@ -20,10 +20,10 @@ class TicketsController < ApplicationController
   def create
     the_ticket = Ticket.new
     the_ticket.customer = @current_user
-    the_ticket.vendor_id = params.fetch("query_vendor_id")
+    the_ticket.vendor_id = params.fetch("vendor_id")
     the_ticket.details = params.fetch("query_details")
-    the_ticket.photo = params.fetch("query_photo")
-    the_ticket.status = params.fetch("query_status")
+    # TODO: measurements
+    # the_ticket.photo = params.fetch("query_photo")
 
     if the_ticket.valid?
       the_ticket.save
