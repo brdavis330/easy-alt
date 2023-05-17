@@ -4,8 +4,6 @@
       Easy Alt
     </a>
   <nav class="navbar navbar-dark bg-dark">
-  <form class="form-outline">
-   
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,20 +15,18 @@
             Menu
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="/messages" class="dropdown-item">
-              Messages
-            </a>
-            <a href="/tickets" class="dropdown-item">
-              Tickets
+        
+            <a href="/dashboard" class="dropdown-item">
+              Dashboard
             </a>
 
-            <% if @current_user.present? %>
+            <%# if @current_user.present? %>
               <a href="/user_sign_out" class="dropdown-item">
                 Log Out
               </a>
-            <% else %>
+            <%# else %>
               <%# TODO: login / sign up %>
-            <% end %>
+            <%# end %>
           </div>
 
         </li>
